@@ -8,7 +8,7 @@ Sutton & Barto (2018), http://incompleteideas.net/book/the-book-2nd.html
 Tested Params (not optimised):
 Acrobot-v1: alpha=0.5, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=32, tile_interval=3
 MountainCar-v0: alpha=1, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=32, tile_interval=10
-CartPole=v1: alpha=1, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=10, tile_interval=10
+CartPole-v1: alpha=1, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=10, tile_interval=10
 '''
 
 import numpy as np
