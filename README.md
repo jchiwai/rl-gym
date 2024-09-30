@@ -4,7 +4,7 @@
 
 ## Reinforcement Learning Algorithms:
 - **Linear Function Approximation**
-  - *Tile Coding and SARSA(λ)*
+  - *Tile Coding and SARSA(λ)*: Tested on Acrobot-v1, CartPole-v1, MountainCar-v0
 
 - **Deep Q Network**
   - WIP
