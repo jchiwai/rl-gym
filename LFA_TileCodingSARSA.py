@@ -179,7 +179,7 @@ if __name__ == "__main__":
     import numpy as np
     import matplotlib.pyplot as plt
     import gymnasium as gym
-    from gymnasium.spaces import Discrete, Box
+    from gymnasium.spaces import Discrete
     from tqdm import tqdm
 
     # Basic Experiment Loop, State->Action->Reward->Update Model->Next State->Next Action->...
