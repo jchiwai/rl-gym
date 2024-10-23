@@ -43,6 +43,8 @@ class TileCodingSARSA():
         self.env.observation_space.high = np.array([2.5 if self.env.observation_space.high[s] > 100 else self.env.observation_space.high[s] for s in range(self.env.observation_space.shape[0])])
         self.env.observation_space.low = np.array([-2.5 if self.env.observation_space.low[s] < -100 else self.env.observation_space.low[s] for s in range(self.env.observation_space.shape[0])])
         
+        assert isinstance(env.action_space, Discrete), "This example only works for envs with discrete action spaces."
+
     def my_tiles(self, state, action):
         '''Returns which tile indices are active given the current state and action'''
         # Normalises state values between 0-1 and spread across the tile intervals
@@ -175,18 +177,19 @@ by Rich Sutton
 if __name__ == "__main__":
     '''Example use: Import model and run experiment loop in a given environment'''
     import numpy as np
-    import gym
     import matplotlib.pyplot as plt
+    import gymnasium as gym
+    from gymnasium.spaces import Discrete, Box
     from tqdm import tqdm
 
-    # Create environment
-    env = gym.make('MountainCar-v0')
-    # Initialise RL model
-    model = TileCodingSARSA(env, alpha=1, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=32, tile_interval=10) 
-
     # Basic Experiment Loop, State->Action->Reward->Update Model->Next State->Next Action->...
-    def experiment(env, model, n_episodes=500):
+    def experiment(env_name, n_episodes=500):
         '''Runs experiment given environment and model -> plots a learning curve and returns the model'''
+
+        env = gym.make(env_name)
+        # Params for the model
+        model = TileCodingSARSA(env, alpha=1, lmda=0.9, gamma=1, epsilon=0.0, max_size=65536, nb_tilings=32, tile_interval=10) 
+
         learning_curve = []
         for _ in tqdm(range(n_episodes)):
             rewards = 0
@@ -212,4 +215,4 @@ if __name__ == "__main__":
         plt.show()
         return model
     
-    model = experiment(env, model, n_episodes=500)
+    model = experiment(env_name='MountainCar-v0', n_episodes=500)
